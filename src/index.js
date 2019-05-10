@@ -1,17 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App'
-
+import {Provider} from 'react-redux'
 import manageUsers from './reducers/manageUsers'
+import {createStore} from 'redux'
 
+const initialState = {
+  type: '@@init',
+  users: []
+}
 
-// add imports and code
-
+const store = createStore(
+  manageUsers,
+  initialState,
+)
 
 ReactDOM.render(
-  // add imports and code
-  <App />
-  // add imports and code
-  ,
+  <Provider store={store}><App /></Provider>,
   document.getElementById('root')
 );
